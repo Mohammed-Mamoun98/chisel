@@ -1,0 +1,25 @@
+# dependencies
+node_modules
+.pnpm-store
+
+# build output
+.next
+out
+*.tsbuildinfo
+
+# env & secrets
+.env
+.env.*
+!.env.example
+
+# tooling / vcs
+.git
+.gitignore
+.vscode
+.idea
+.DS_Store
+
+# docker
+Dockerfile
+.dockerignore
+docker-compose.yml
