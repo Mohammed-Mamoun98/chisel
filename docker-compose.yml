@@ -1,0 +1,21 @@
+services:
+  chisel:
+    build: .
+    image: chisel:local
+    ports:
+      - "3000:3000"
+    environment:
+      # Required at runtime — set it in the shell or in .env.local.
+      OPENROUTER_API_KEY: ${OPENROUTER_API_KEY:-}
+      # Optional, defaults to openai/gpt-oss-120b:free.
+      AI_MODEL: ${AI_MODEL:-}
+    env_file:
+      - path: .env.local
+        required: false
+    healthcheck:
+      test: ["CMD", "wget", "-qO-", "http://127.0.0.1:3000/"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+      start_period: 10s
+    restart: unless-stopped
