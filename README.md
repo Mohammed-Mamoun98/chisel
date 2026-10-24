@@ -20,6 +20,24 @@ You can start editing the page by modifying `app/page.tsx`. The page auto-update
 
 This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
 
+## Docker
+
+Build and run the production image (Next.js standalone output):
+
+```bash
+docker build -t chisel .
+docker run --rm -p 3000:3000 -e OPENROUTER_API_KEY=sk-or-... chisel
+```
+
+Or with Compose (reads `OPENROUTER_API_KEY` / `AI_MODEL` from the shell or `.env.local`):
+
+```bash
+cp .env.example .env.local   # then fill in OPENROUTER_API_KEY
+docker compose up --build
+```
+
+The image runs as a non-root user on port 3000 and serves `node server.js` from the standalone build.
+
 ## Learn More
 
 To learn more about Next.js, take a look at the following resources:
