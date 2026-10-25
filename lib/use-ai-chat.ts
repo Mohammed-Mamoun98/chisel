@@ -4,6 +4,8 @@ import { useChat } from "ai/react";
 import type { AiChatConfig, AiChatState } from "./types";
 
 export function useAiChat(config: AiChatConfig): AiChatState {
+  // biome-ignore lint/suspicious/noDebugger: Intentional debugging breakpoint
+  debugger;
   const chat = useChat({
     api: config.endpoint,
   });
